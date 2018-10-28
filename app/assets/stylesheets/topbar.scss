@@ -1,3 +1,15 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1522199710521-72d69614c702?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=272dda12b7480a098e1320036ac49966&auto=format&fit=crop&w=1652&q=80");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-attachment: fixed;
+}
+
+.callout {
+  background-color: #D9E5F1;
+  border-radius: 10px;
+}
+
 .menu a {
   color: #FFFFFF;
   font-family: 'Krub', sans-serif;

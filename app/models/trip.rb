@@ -4,4 +4,5 @@ class Trip < ApplicationRecord
   has_many :users, through: :usertrips
 
   validates_presence_of :name, :user_id, :start_date, :end_date
+
 end

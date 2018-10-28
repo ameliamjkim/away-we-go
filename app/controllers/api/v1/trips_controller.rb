@@ -1,23 +1,27 @@
 class Api::V1::TripsController < ApplicationController
 	protect_from_forgery unless: -> { request.format.json? }
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-    user_trips = []
+		upcoming_trips = []
+		past_trips = []
     ordered = Trip.order(:start_date)
     ordered.each do |trip|
-      if trip.users.include? current_user
-        user_trips << trip
-      end
+      if trip.start_date > Date.today && trip.users.include?(current_user)
+        upcoming_trips << trip
+      elsif trip.start_date < Date.today && trip.users.include?(current_user)
+				past_trips << trip
+			end
     end
-    render json: user_trips
+		render json: { upcoming_trips: upcoming_trips, past_trips: past_trips }
 	end
 
+
 	def show
-    if Trip.find(params[:id]).users.include? current_user
+    if Trip.find(params[:id]).users.include?(current_user)
       render json: Trip.find(params[:id])
     else
-      render json: "You are not authorized"
+      render json: "You are not authorized to view this trip!"
     end
 	end
 
@@ -25,11 +29,9 @@ class Api::V1::TripsController < ApplicationController
 	end
 
 	def update
-
 	end
 
 	def destroy
-
 	end
 
 
