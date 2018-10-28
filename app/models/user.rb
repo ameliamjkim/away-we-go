@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :usertrips
+  has_many :trips, through: :usertrips
+
   validates_presence_of :first_name, :last_name
   validates_format_of [:first_name, :last_name],  {with: /\A[a-zA-Z]+\z/}
 end
