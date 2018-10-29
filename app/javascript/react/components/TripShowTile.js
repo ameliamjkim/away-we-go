@@ -3,15 +3,14 @@ import { Link } from 'react-router'
 
  const TripShowTile = (props) => {
   return(
-    <div>
-    <br/>
-      <div className="grid-x">
-        <div className="callout cell medium-6 small-8">
-          <h4> Location: {props.name}</h4>
+    <div className="tile cell small-10 small-offset-1 large-6 large-offset-3">
+      <div className="callout">
+        <div>
+          <h3> Location: {props.name}</h3>
           <p> Owner - {props.firstName} {props.lastName}</p>
           <p> Start Day: {props.startDate} </p>
           <p> End Day: {props.endDate} </p>
-          <p> <Link to={'/'}>All Your Trips</Link> </p>
+          <p> <Link to={'/'}>Go Back to All Trips</Link> </p>
         </div>
       </div>
     </div>

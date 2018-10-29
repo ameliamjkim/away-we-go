@@ -67,17 +67,13 @@ class TripIndexContainer extends Component {
 
     return(
       <div>
-      <br/>
-      <h2> Your Upcoming Trips </h2>
+      <h2 className="heading"> Your Upcoming Trips </h2>
+        <div className="grid-x">
+          {upcoming_trips}
+        </div>
+      <h2 className="heading"> {title} </h2>
       <br/>
         <div className="grid-x">
-          <div className="cell medium-6 small-11">
-            {upcoming_trips}
-          </div>
-        </div>
-      <h3> {title} </h3>
-      <br/>
-        <div className="row">
           {past_trips}
         </div>
       </div>

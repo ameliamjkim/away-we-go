@@ -37,7 +37,7 @@ class TripShowContainer extends Component {
 
   render() {
     return(
-      <div>
+      <div className="grid-x">
         <TripShowTile
           key={this.state.trip.id}
           id={this.state.trip.id}
