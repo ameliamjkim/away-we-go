@@ -4,6 +4,8 @@ import TripIndexContainer from '../containers/TripIndexContainer'
 import TripShowContainer from '../containers/TripShowContainer'
 import SignUp from '../components/SignUp'
 
+// <Route path="/homes"/>
+
 export const App = (props) => {
   return (
     <div>

@@ -14,4 +14,4 @@ import { Link } from 'react-router'
   )
 }
 
- export default TripIndexTile
+export default TripIndexTile

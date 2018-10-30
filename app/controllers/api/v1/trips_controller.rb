@@ -16,7 +16,6 @@ class Api::V1::TripsController < ApplicationController
 		render json: { upcoming_trips: upcoming_trips, past_trips: past_trips }
 	end
 
-
 	def show
     if Trip.find(params[:id]).users.include?(current_user)
       render json: Trip.find(params[:id])
@@ -26,6 +25,14 @@ class Api::V1::TripsController < ApplicationController
 	end
 
 	def create
+		trip = Trip.new(trip_params)
+		trip.user = current_user
+		if trip.save
+			usertrip = Usertrip.create(trip: trip, user: current_user)
+			render json: trip
+			else
+			render json: {error: review.errors.full_messages.join(', ') }, status: :unprocessable_entity
+		end
 	end
 
 	def update
@@ -41,7 +48,6 @@ class Api::V1::TripsController < ApplicationController
 	end
 
 	def trip_params
-
+		params.require(:trip).permit(:name, :start_date, :end_date, user: current_user)
 	end
-
 end

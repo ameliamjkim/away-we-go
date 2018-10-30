@@ -55,9 +55,9 @@ describe("TripIndexContainer", () => {
 
   it('should have the specified initial state', () => {
   expect(wrapper.state()).toEqual({
-      upcoming_trips: [],
-      past_trips: []
+      upcomingTrips: [],
+      pastTrips: [],
+      isHidden: true
     });
   })
-
 });

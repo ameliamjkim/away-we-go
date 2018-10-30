@@ -24,7 +24,7 @@ describe("TripIndexTile", () => {
 
   it("should render a h4 tag with the the text property value", () => {
   expect(wrapper.find("h4").text()).toBe("Korea")
-  })
+  });
 
   it("should render an p tag", () => {
     expect(wrapper.find("p")).toBePresent();
@@ -32,5 +32,5 @@ describe("TripIndexTile", () => {
 
   it("should render a p tag with the the text property value", () => {
   expect(wrapper.find("p").text()).toBe("From 12 Oct 2018 to 19 Oct 2018")
-  })
+  });
 })

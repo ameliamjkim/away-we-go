@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
     if current_user
       render json: User.where(id: current_user)
     else
-      render json: [{current_user_id: "no_current_user"}]
+      render json: "You are not authorized"
     end
 	end
 end

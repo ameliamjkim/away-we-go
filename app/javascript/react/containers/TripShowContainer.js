@@ -1,12 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import TripShowTile from '../components/TripShowTile'
+import AttendeesContainer from '../containers/AttendeesContainer'
 
 class TripShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
       trip: [],
-      user: []
+      user: [],
+      attendees: []
     }
   }
 
@@ -29,7 +31,8 @@ class TripShowContainer extends Component {
       .then(data => {
         this.setState({
           trip: data,
-          user: data.user
+          user: data.user,
+          attendees: data.users
          })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -37,16 +40,25 @@ class TripShowContainer extends Component {
 
   render() {
     return(
-      <div className="grid-x">
-        <TripShowTile
-          key={this.state.trip.id}
-          id={this.state.trip.id}
-          name={this.state.trip.name}
-          startDate={this.state.trip.start_date}
-          endDate={this.state.trip.end_date}
-          firstName={this.state.user.first_name}
-          lastName={this.state.user.last_name}
-        />
+      <div>
+        <div className="grid-x">
+          <TripShowTile
+            key={this.state.trip.id}
+            id={this.state.trip.id}
+            name={this.state.trip.name}
+            startDay={this.state.trip.start_date}
+            endDay={this.state.trip.end_date}
+            firstName={this.state.user.first_name}
+            lastName={this.state.user.last_name}
+          />
+        </div>
+        <div className="grid-x">
+          <AttendeesContainer
+            key={this.state.trip.id}
+            id={this.state.trip.id}
+            attendees={this.state.attendees}
+          />
+        </div>
       </div>
 
       )

@@ -1,12 +1,15 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import TripIndexTile from '../components/TripIndexTile'
+import TripFormContainer from '../containers/TripFormContainer'
 class TripIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      upcoming_trips: [],
-      past_trips: []
+      upcomingTrips: [],
+      pastTrips: [],
+      isHidden: true
     }
+    this.addNewTrip = this.addNewTrip.bind(this);
   }
 
   componentDidMount() {
@@ -26,15 +29,50 @@ class TripIndexContainer extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState( {
-          upcoming_trips: data.upcoming_trips,
-          past_trips: data.past_trips
+          upcomingTrips: data.upcoming_trips,
+          pastTrips: data.past_trips
          } )
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
+  addNewTrip(formPayLoad) {
+   fetch(`/api/v1/trips`, {
+     method: 'post',
+     body: JSON.stringify(formPayLoad),
+     headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json' },
+     credentials: 'same-origin'
+    })
+    .then(response => {
+     if (response.ok) {
+       return response
+     }
+     else {
+       let errorMessage = `${response.status} (${response.statusText})`,
+         error = new Error(errorMessage)
+       throw error
+     }
+    })
+    .then(response => response.json())
+    .then(body => {
+     let newTrips = this.state.upcomingTrips.concat(body)
+     console.log(body)
+     this.setState( { upcomingTrips: newTrips } )
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  toggleHidden() {
+    this.setState({
+      isHidden: !this.state.isHidden
+    })
+  }
+
+
   render() {
-    let upcoming_trips = this.state.upcoming_trips.map((trip) => {
+    let upcomingTrips = this.state.upcomingTrips.map((trip) => {
       return (
         <TripIndexTile
           key={trip.id}
@@ -47,7 +85,7 @@ class TripIndexContainer extends Component {
       )
     })
 
-    let past_trips = this.state.past_trips.map((trip) => {
+    let pastTrips = this.state.pastTrips.map((trip) => {
       return (
         <TripIndexTile
           key={trip.id}
@@ -61,20 +99,28 @@ class TripIndexContainer extends Component {
     })
 
     let title
-    if(this.state.past_trips.length != 0 ) {
+    if(this.state.pastTrips.length != 0 ) {
       title = "Your Past Trips"
     }
 
     return(
       <div>
-      <h2 className="heading"> Your Upcoming Trips </h2>
+      <h2 className="heading">Your Upcoming Trips</h2>
         <div className="grid-x">
-          {upcoming_trips}
+          {upcomingTrips}
         </div>
-      <h2 className="heading"> {title} </h2>
+        <div className="grid-x form-button">
+          <button className="panel cell small-4 small-offset-4 large-2 large-offset-5" onClick={this.toggleHidden.bind(this)}>
+            <span> Add New Trip </span>
+          </button>
+            {!this.state.isHidden && <TripFormContainer
+              addNewTrip={this.addNewTrip}
+              />}
+        </div>
+        <h2 className="heading"> {title} </h2>
       <br/>
         <div className="grid-x">
-          {past_trips}
+          {pastTrips}
         </div>
       </div>
       )
