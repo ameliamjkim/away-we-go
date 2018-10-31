@@ -22,3 +22,5 @@ usertrip_4 = Usertrip.create(trip_id: 4, user_id: 2)
 usertrip_5 = Usertrip.create(trip_id: 1, user_id: 1)
 usertrip_6 = Usertrip.create(trip_id: 2, user_id: 1)
 usertrip_7 = Usertrip.create(trip_id: 3, user_id: 1)
+
+follow1 = Follow.create(follower: User.first, followed: User.second)

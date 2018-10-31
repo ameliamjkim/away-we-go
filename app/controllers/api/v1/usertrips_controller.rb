@@ -12,20 +12,24 @@ class Api::V1::UsertripsController < ApplicationController
     render json: usertrips
 	end
 
+	def show
+    if Usertrip.find(params[:id]).trip.users.include?(current_user)
+      render json: Usertrip.find(params[:id])
+    else
+      render json: "You're not authorized"
+    end
+	end
+
   def create
-    binding.pry
-
-    usertrip = Usertrip.new(usertrip_params)
-    usertrip.trip
-    usertrip.user
-
+    usertrip = Usertrip.new(user: User.find_by(email: user_params[:user]), trip: Trip.find(user_params[:tripId].to_i))
     if usertrip.save
-      render json: usertrip
+      render json: usertrip.user
     end
   end
 
-  def usertrip_params
-    params.require(:usertrip).permit(:user, user: current_user)
+  private
+  def user_params
+    params.require(:user).permit(:user, :tripId)
   end
 
 end

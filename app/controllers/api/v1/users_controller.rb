@@ -3,10 +3,10 @@ class Api::V1::UsersController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-    if current_user
-      render json: User.where(id: current_user)
-    else
-      render json: "You are not authorized"
-    end
+		render json: User.all
+	end
+
+	def show
+		render json: User.find(params[:id])
 	end
 end

@@ -8,7 +8,8 @@ class TripShowContainer extends Component {
     this.state = {
       trip: [],
       user: [],
-      attendees: []
+      attendees: [],
+      currentUserId: ""
     }
   }
 
@@ -32,7 +33,8 @@ class TripShowContainer extends Component {
         this.setState({
           trip: data,
           user: data.user,
-          attendees: data.users
+          attendees: data.users,
+          currentUserId: data.current_user_id
          })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -57,6 +59,8 @@ class TripShowContainer extends Component {
             key={this.state.trip.id}
             id={this.state.trip.id}
             attendees={this.state.attendees}
+            tripId={this.props.params.id}
+            currentUserId={this.state.currentUserId}
           />
         </div>
       </div>

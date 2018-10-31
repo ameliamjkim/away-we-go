@@ -4,7 +4,8 @@ class AttendeeFormContainer extends Component {
   constructor(props) {
    super(props);
    this.state = {
-     user: ""
+     user: "",
+     followers: this.props.followers
     }
 
    this.handleSubmit = this.handleSubmit.bind(this)
@@ -18,9 +19,10 @@ class AttendeeFormContainer extends Component {
   handleSubmit(event) {
     event.preventDefault()
 
-    let formPayLoad = {
-      user: this.state.user
-    }
+    let formPayLoad = { user: {
+      user: this.state.user,
+      tripId: this.props.tripId
+    }}
 
     if(this.state.user.trim() != "") {
       this.props.addAttendee(formPayLoad)
@@ -33,6 +35,12 @@ class AttendeeFormContainer extends Component {
   }
 
  render() {
+   let followers = this.state.followers.map((follower) => {
+     return(
+       <option key={follower.id} value={follower.email}>{follower.first_name} {follower.last_name}</option>
+     )
+   })
+
    return (
      <div className="tile cell">
        <form onSubmit={this.handleSubmit}>
@@ -40,7 +48,7 @@ class AttendeeFormContainer extends Component {
           Select a friend:
           <select value={this.state.value} onChange={this.handleOnChange}>
             <option value="">Choose a Friend</option>
-            <option value="Lemon">Lemon</option>
+            {followers}
           </select>
         </label>
         <input type="submit" value="Submit" />

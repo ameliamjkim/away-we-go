@@ -7,7 +7,7 @@ class AttendeesContainer extends Component {
     this.state = {
       attendees: this.props.attendees,
       isHidden: true,
-      friends: []
+      followers: []
     }
     this.addAttendee = this.addAttendee.bind(this)
   }
@@ -16,6 +16,29 @@ class AttendeesContainer extends Component {
     this.setState({
       isHidden: !this.state.isHidden
     })
+  }
+
+  componentDidMount() {
+    fetch(`/api/v1/users/${this.props.currentUserId}`,
+    {
+      credentials: 'same-origin',
+    })
+      .then(response => {
+        if (response.ok) {
+          return response
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        this.setState( {
+          followers: data[0].followers
+         } )
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   addAttendee(formPayLoad) {
@@ -39,15 +62,17 @@ class AttendeesContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      console.log(body)
      let newAttendees = this.state.attendees.concat(body)
-     console.log(body)
-     this.setState( { attendees: newAttendees } )
+     this.setState( {
+       attendees: newAttendees,
+      } )
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-
   render() {
+    console.log(this.state.attendees)
     let attendees = this.state.attendees.map((attendee) => {
       return(
         <li key={attendee.id}> {attendee.first_name} {attendee.last_name}</li>
@@ -69,7 +94,8 @@ class AttendeesContainer extends Component {
             {!this.state.isHidden &&
               <AttendeeFormContainer
                 addAttendee={this.addAttendee}
-                friends={this.state.friends}
+                followers={this.state.followers}
+                tripId={this.props.tripId}
               />}
 
         </div>

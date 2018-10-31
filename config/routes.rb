@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :trips, only: [:index, :show, :create]
-      resources :users, only: [:index]
+      resources :users, only: [:index, :show]
       resources :usertrips, only: [:index, :show, :create]
     end
   end
 
   get "/", to: "homes#index"
   get "/trips/:id", to: "homes#index"
+  get "/users/:id", to: "homes#index"
+  
 end
