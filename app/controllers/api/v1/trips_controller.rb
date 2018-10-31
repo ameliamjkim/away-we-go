@@ -13,7 +13,12 @@ class Api::V1::TripsController < ApplicationController
 				past_trips << trip
 			end
     end
-		render json: { upcoming_trips: upcoming_trips, past_trips: past_trips }
+
+		payload = {
+			upcoming_trips: serialize_array(upcoming_trips, TripSerializer),
+			past_trips: serialize_array(past_trips, TripSerializer),
+		}
+		render json: {current_user_id: current_user.id, trips: payload }
 	end
 
 	def show
@@ -35,10 +40,8 @@ class Api::V1::TripsController < ApplicationController
 		end
 	end
 
-	def update
-	end
-
 	def destroy
+		Trip.destroy(params[:id])
 	end
 
 
@@ -46,6 +49,10 @@ class Api::V1::TripsController < ApplicationController
 	def authorize_delete?
 		current_user == Trip.find(params[:id]).user || current_user.admin?
 	end
+
+	def serialize_array(data, serializer)
+     ActiveModel::Serializer::CollectionSerializer.new(data, each_serializer: serializer)
+  end
 
 	def trip_params
 		params.require(:trip).permit(:name, :start_date, :end_date, user: current_user)

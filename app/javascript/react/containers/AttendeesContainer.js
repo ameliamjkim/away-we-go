@@ -35,7 +35,7 @@ class AttendeesContainer extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState( {
-          followers: data[0].followers
+          followers: data.followers
          } )
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -72,7 +72,6 @@ class AttendeesContainer extends Component {
   }
 
   render() {
-    console.log(this.state.attendees)
     let attendees = this.state.attendees.map((attendee) => {
       return(
         <li key={attendee.id}> {attendee.first_name} {attendee.last_name}</li>

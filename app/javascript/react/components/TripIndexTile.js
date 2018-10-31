@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
- const TripIndexTile = (props) => {
+const TripIndexTile = (props) => {
   return(
     <div className="tile small-10 small-offset-1 large-6 large-offset-3">
       <div className="callout">

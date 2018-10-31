@@ -12,6 +12,7 @@ export const App = (props) => {
     <div>
       <Router history={browserHistory}>
         <Route path="/" component={TripIndexContainer} />
+        <Route path="trips" component={TripIndexContainer} />
         <Route path="trips/:id" component={TripShowContainer} />
         <Route path="users/:id" component={UserShowContainer} />
     </Router>

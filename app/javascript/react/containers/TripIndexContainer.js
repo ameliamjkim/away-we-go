@@ -7,6 +7,7 @@ class TripIndexContainer extends Component {
     this.state = {
       upcomingTrips: [],
       pastTrips: [],
+      currentUserId: "",
       isHidden: true
     }
     this.addNewTrip = this.addNewTrip.bind(this);
@@ -29,8 +30,9 @@ class TripIndexContainer extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState( {
-          upcomingTrips: data.upcoming_trips,
-          pastTrips: data.past_trips
+          upcomingTrips: data.trips.upcoming_trips,
+          pastTrips: data.trips.past_trips,
+          currentUserId: data.current_user_id
          } )
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -70,7 +72,6 @@ class TripIndexContainer extends Component {
     })
   }
 
-
   render() {
     let upcomingTrips = this.state.upcomingTrips.map((trip) => {
       return (
@@ -78,7 +79,6 @@ class TripIndexContainer extends Component {
           key={trip.id}
           id={trip.id}
           name={trip.name}
-          owner={trip.user}
           startDay={trip.start_date}
           endDay={trip.end_date}
         />
@@ -91,7 +91,6 @@ class TripIndexContainer extends Component {
           key={trip.id}
           id={trip.id}
           name={trip.name}
-          owner={trip.user}
           startDay={trip.start_date}
           endDay={trip.end_date}
         />

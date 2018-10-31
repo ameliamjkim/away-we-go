@@ -44,6 +44,7 @@ class UserShowContainer extends Component {
   }
 
   render() {
+    console.log(this.state)
     return(
       <div>
         <div className="grid-x">
