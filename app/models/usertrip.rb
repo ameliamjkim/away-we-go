@@ -3,4 +3,6 @@ class Usertrip < ApplicationRecord
   belongs_to :trip
 
   validates_presence_of :user_id, :trip_id
+  validates_uniqueness_of :user_id, scope: :trip_id
+
 end
