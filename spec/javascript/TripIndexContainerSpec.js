@@ -10,24 +10,26 @@ describe("TripIndexContainer", () => {
     jasmineEnzyme();
 
     data = {
-      upcoming_trips: [
-        {
-        id: 1,
-        name: "Greece",
-        start_date: "2018-11-11",
-        end_date: "2018-11-20",
-        user_id: 1
-        }
-      ],
-      past_trips: [
-        {
-        id: 2,
-        name: "California",
-        start_date: "2018-10-11",
-        end_date: "2018-10-20",
-        user_id: 1
-        }
-      ]
+      trips: {
+        upcoming_trips: [
+          {
+          id: 1,
+          name: "Greece",
+          start_date: "2018-11-11",
+          end_date: "2018-11-20",
+          user_id: 1
+          }
+        ],
+        past_trips: [
+          {
+          id: 2,
+          name: "California",
+          start_date: "2018-10-11",
+          end_date: "2018-10-20",
+          user_id: 1
+          }
+        ]
+      }
     }
 
     fetchMock.get(`/api/v1/trips`, {
@@ -57,7 +59,8 @@ describe("TripIndexContainer", () => {
   expect(wrapper.state()).toEqual({
       upcomingTrips: [],
       pastTrips: [],
-      isHidden: true
+      isHidden: true,
+      currentUserId: ""
     });
   })
 });
