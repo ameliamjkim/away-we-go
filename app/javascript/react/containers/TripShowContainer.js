@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TripShowTile from '../components/TripShowTile'
 import AttendeesContainer from '../containers/AttendeesContainer'
+import ChatContainer from '../containers/ChatContainer'
 import { browserHistory } from 'react-router'
 
 class TripShowContainer extends Component {

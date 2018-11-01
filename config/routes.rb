@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   get "/trips", to: "homes#index"
   get "/trips/:id", to: "homes#index"
   get "/users/:id", to: "homes#index"
+  get "/trips/:id/chats", to: "homes#index"
 
 end
