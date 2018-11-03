@@ -27,8 +27,4 @@ describe("TripShowTile", () => {
     expect(wrapper.find("Link")).toBePresent();
   });
 
-  it("should render an p tag", () => {
-    expect(wrapper.find("p")).toBePresent();
-  });
-
 })

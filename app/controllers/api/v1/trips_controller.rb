@@ -5,14 +5,14 @@ class Api::V1::TripsController < ApplicationController
 	def index
 		upcoming_trips = []
 		past_trips = []
-    ordered = Trip.order(:start_date)
-    ordered.each do |trip|
-      if trip.start_date > Date.today && trip.users.include?(current_user)
-        upcoming_trips << trip
-      elsif trip.start_date < Date.today && trip.users.include?(current_user)
+	  ordered = Trip.order(:start_date)
+	  ordered.each do |trip|
+	    if trip.start_date > Date.today && trip.users.include?(current_user)
+	      upcoming_trips << trip
+	    elsif trip.start_date < Date.today && trip.users.include?(current_user)
 				past_trips << trip
 			end
-    end
+	  end
 
 		payload = {
 			upcoming_trips: serialize_array(upcoming_trips, TripSerializer),
@@ -34,6 +34,7 @@ class Api::V1::TripsController < ApplicationController
 		trip.user = current_user
 		if trip.save
 			usertrip = Usertrip.create(trip: trip, user: current_user)
+			chatroom = Chat.create(trip: trip)
 			render json: trip
 			else
 			render json: {error: review.errors.full_messages.join(', ') }, status: :unprocessable_entity
@@ -51,7 +52,7 @@ class Api::V1::TripsController < ApplicationController
 	end
 
 	def serialize_array(data, serializer)
-     ActiveModel::Serializer::CollectionSerializer.new(data, each_serializer: serializer)
+   ActiveModel::Serializer::CollectionSerializer.new(data, each_serializer: serializer)
   end
 
 	def trip_params

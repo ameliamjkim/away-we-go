@@ -1,11 +1,12 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :email, :followers, :followeds, :current_user_id
+  attributes :id, :first_name, :last_name, :email, :followers, :followeds, :current_user
 
-  def current_user_id
+  def current_user
     if scope
-      scope.id
+      scope
     else
       nil
     end
   end
+
 end

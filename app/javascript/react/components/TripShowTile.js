@@ -9,7 +9,7 @@ import { Link } from 'react-router'
     let deleteButton
 
     if(props.currentUserId == props.ownerId) {
-    deleteButton = <button onClick={deleteReview}>Delete</button>
+    deleteButton = <button className="panel" onClick={deleteReview}>Delete the Trip</button>
     }
 
   return(
@@ -22,8 +22,11 @@ import { Link } from 'react-router'
             <li>Begins: {props.startDay}</li>
             <li>Ends: {props.endDay}</li>
           </ul>
+          <Link to={`/trips/${props.id}/chats`}>Chatroom</Link>
+          <br/>
+          <Link to={'/'}>Go Back to All Trips</Link>
+          <br/>
           {deleteButton}
-          <p><Link to={'/'}>Go Back to All Trips</Link></p>
         </div>
       </div>
     </div>

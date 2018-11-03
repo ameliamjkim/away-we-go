@@ -57,7 +57,7 @@ class TripFormContainer extends Component {
           <label> End Day:
            <input name="endDate" type="date" onChange={this.handleChange} value={this.state.endDate} />
            </label>
-         <input type="submit" value="Submit"/>
+         <input className="panel" type="submit" value="Submit"/>
        </form>
      </div>
    );

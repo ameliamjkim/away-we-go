@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TripShowTile from '../components/TripShowTile'
 import AttendeesContainer from '../containers/AttendeesContainer'
+import ChatContainer from '../containers/ChatContainer'
 import { browserHistory } from 'react-router'
 
 class TripShowContainer extends Component {
@@ -44,9 +45,8 @@ class TripShowContainer extends Component {
 
   handleDelete(id){
     let tripId = this.props.params.id
-    fetch(`/api/v1/trips/${tripId}`,
-    {
-      method: 'DELETE',
+    fetch(`/api/v1/trips/${tripId}`, {
+      method: 'delete',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json' } ,

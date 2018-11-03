@@ -5,11 +5,16 @@ Rails.application.routes.draw do
 
   resources :homepages, only: [:index]
 
+  resources :users, only: [:search] do
+    get 'search', on: :collection
+  end
+
   namespace :api do
     namespace :v1 do
       resources :trips, only: [:index, :show, :create, :destroy]
-      resources :users, only: [:index, :show]
+      resources :users, only: [:index, :show, :create, :destroy]
       resources :usertrips, only: [:index, :show, :create]
+      resources :follows, only: [:post, :destroy]
     end
   end
 
@@ -17,5 +22,6 @@ Rails.application.routes.draw do
   get "/trips", to: "homes#index"
   get "/trips/:id", to: "homes#index"
   get "/users/:id", to: "homes#index"
+  get "/trips/:id/chats", to: "homes#index"
 
 end
