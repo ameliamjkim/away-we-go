@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(version: 2018_11_01_165202) do
   create_table "chats", force: :cascade do |t|
     t.string "title"
     t.string "description"
+    t.bigint "trip_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_chats_on_trip_id"
   end
 
   create_table "follows", force: :cascade do |t|

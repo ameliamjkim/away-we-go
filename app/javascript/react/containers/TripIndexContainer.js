@@ -109,7 +109,7 @@ class TripIndexContainer extends Component {
           {upcomingTrips}
         </div>
         <div className="grid-x form-button">
-          <button className="panel cell small-4 small-offset-4 large-2 large-offset-5" onClick={this.toggleHidden.bind(this)}>
+          <button className="panel cell small-6 small-offset-3 medium-4 medium-offset-4 large-2 large-offset-5" onClick={this.toggleHidden.bind(this)}>
             <span> Add New Trip </span>
           </button>
             {!this.state.isHidden && <TripFormContainer

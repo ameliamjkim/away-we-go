@@ -9,4 +9,37 @@ class Api::V1::UsersController < ApplicationController
 	def show
 		render json: User.find(params[:id])
 	end
+
+	def create
+		follow = Follow.new
+		follow.followed = User.find(followed_params)
+		follow.follower = current_user
+		if follow.followed != follow.follower
+			follow.save
+			user = User.find(followed_params)
+			render json: {followed: user.followeds, followers: user.followers}
+		end
+	end
+
+	def destroy
+		follow = Follow.find_by(follower: current_user, followed: User.find(delete_params))
+		follow.destroy
+
+		user = User.find(delete_params)
+		render json: {followed: user.followeds, followers: user.followers}
+	end
+
+	private
+	def serialize_array(data, serializer)
+		 ActiveModel::Serializer::CollectionSerializer.new(data, each_serializer: serializer)
+	end
+
+	private
+	def followed_params
+		params.require(:followedId)
+	end
+
+	def delete_params
+		params.require(:id)
+	end
 end

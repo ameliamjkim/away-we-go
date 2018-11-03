@@ -8,20 +8,17 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    puts data
-    binding.pry
-    chat = Chat.find_or_create_by(trip_id: params[:trip_id])
-    chat.messages << Message.create(body: data["message"], user: User.find(data["user"]["user_id"]))
+    chat = Chat.find_by(trip_id: data["trip_id"])
+    chat.messages << Message.create(body: data["message"], user: User.find(data["user"]))
 
     chat_key = chat.id
+    user = User.find(data["user"])
 
     chat_json = {
       "chat_key": chat_key,
       "message": data["message"],
-      "user": data["user"]
+      "user": user
     }
-
     ActionCable.server.broadcast("chat_#{params[:chat_id]}", chat_json)
   end
-
 end

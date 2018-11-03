@@ -6,7 +6,7 @@ class ChatContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
+      user: null,
       messages: [],
       message: ''
     }
@@ -36,9 +36,7 @@ class ChatContainer extends Component {
     App.chatChannel = App.cable.subscriptions.create(
       {
         channel: "ChatChannel",
-        chat_id: this.props.params.id,
-        trip_id: this.props.params.id
-
+        chat_id: this.props.params.id
       },
       {
         connected: () => console.log("ChatChannel connected"),
@@ -68,7 +66,9 @@ class ChatContainer extends Component {
     // Send info to the receive method on the back end
     App.chatChannel.send({
      message: prepMessage,
-     user: user_info
+     user: user_info,
+     trip_id: this.props.params.id
+
     })
 
     this.handleClearForm();
@@ -83,8 +83,7 @@ class ChatContainer extends Component {
       return(
         <Message
           key={message.messageId}
-          handle={message.user.handle}
-          icon={message.user.icon_num}
+          email={message.user.email}
           message={message.message}
         />
       )
@@ -92,7 +91,7 @@ class ChatContainer extends Component {
 
     return(
       <div className="grid-x">
-        <div className="cell small-10 small-offset-1 medium-6 medium-offset-3">
+        <div className="tile cell small-10 small-offset-1 medium-6 medium-offset-3">
           {messages}
         </div>
         <div className="cell small-10 small-offset-1 medium-6 medium-offset-3">

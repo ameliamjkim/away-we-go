@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Message = ({ handle, message, icon }) => {
+const Message = (props) => {
   return(
     <p>
-      <strong> {handle}: </strong>
-      {message}
+      <strong> {props.email}: </strong>
+      {props.message}
     </p>
   );
 };
