@@ -38,6 +38,7 @@ class UserShowContainer extends Component {
       })
       .then(response => response.json())
       .then(data => {
+        debugger
         this.setState({
           followers: data.followers,
           followeds: data.followeds,

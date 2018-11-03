@@ -35,7 +35,7 @@ class Api::V1::TripsController < ApplicationController
 		if trip.save
 			usertrip = Usertrip.create(trip: trip, user: current_user)
 			chatroom = Chat.create(trip: trip)
-			render json: trip
+			render json: {trip: trip}
 			else
 			render json: {error: review.errors.full_messages.join(', ') }, status: :unprocessable_entity
 		end
@@ -44,7 +44,6 @@ class Api::V1::TripsController < ApplicationController
 	def destroy
 		Trip.destroy(params[:id])
 	end
-
 
 	private
 	def authorize_delete?

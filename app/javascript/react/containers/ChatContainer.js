@@ -43,7 +43,6 @@ class ChatContainer extends Component {
         disconnected: () => console.log("ChatChannel disconnected"),
         received: data => {
           // Data broadcasted from the chat channel
-          console.log(data)
           this.handleMessageReceipt(data)
         }
       }

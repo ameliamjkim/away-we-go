@@ -15,14 +15,3 @@ trip_1 = Trip.create(name: "Korea", user: User.first, start_date: "01 Feb 2019",
 trip_2 = Trip.create(name: "Greece", user: User.first, start_date: "11 Nov 2018", end_date: "20 Nov 2018")
 trip_3 = Trip.create(name: "Hong Kong", user: User.first, start_date: "11 Nov 2018", end_date: "20 Nov 2018")
 trip_4 = Trip.create(name: "California", user: User.first, start_date: "10 Oct 2018", end_date: "17 Oct 2018")
-
-usertrip_1 = Usertrip.create(trip_id: 1, user_id: 2)
-usertrip_2 = Usertrip.create(trip_id: 2, user_id: 2)
-usertrip_3 = Usertrip.create(trip_id: 3, user_id: 2)
-usertrip_4 = Usertrip.create(trip_id: 4, user_id: 2)
-
-usertrip_5 = Usertrip.create(trip_id: 1, user_id: 1)
-usertrip_6 = Usertrip.create(trip_id: 2, user_id: 1)
-usertrip_7 = Usertrip.create(trip_id: 3, user_id: 1)
-
-follow1 = Follow.create(follower: User.first, followed: User.second)
