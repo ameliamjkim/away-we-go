@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'react-router'
 
  const TripShowTile = (props) => {
-    let deleteReview = () => {
+    let deleteTrip = () => {
       props.handleDelete(props.id)
     }
 
     let deleteButton
 
     if(props.currentUserId == props.ownerId) {
-    deleteButton = <button className="panel tile" onClick={deleteReview}>Delete this Trip</button>
+    deleteButton = <button className="panel tile" onClick={deleteTrip}>Delete this Trip</button>
     }
 
   return(
