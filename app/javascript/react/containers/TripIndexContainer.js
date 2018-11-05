@@ -59,7 +59,7 @@ class TripIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-     let newTrips = this.state.upcomingTrips.concat(body)
+     let newTrips = this.state.upcomingTrips.concat(body.trip)
      console.log(body)
      this.setState( { upcomingTrips: newTrips } )
     })

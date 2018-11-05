@@ -5,8 +5,6 @@ import TripShowContainer from '../containers/TripShowContainer'
 import UserShowContainer from '../containers/UserShowContainer'
 import ChatContainer from '../containers/ChatContainer'
 
-// <Route path="/homes"/>
-
 export const App = (props) => {
   return (
     <div>

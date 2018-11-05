@@ -2,7 +2,7 @@ import React from 'react'
 
 const Message = (props) => {
   return(
-    <p>
+    <p className="callout">
       <strong> {props.email}: </strong>
       {props.message}
     </p>

@@ -11,8 +11,8 @@
 
 <body>
   <div data-sticky-container>
-    <div class="top-bar sticky" data-sticky data-options="marginTop: 0" data-sticky-on="small">
-    <div class="top-bar-left">
+    <div class="top-bar sticky grid-x" data-sticky data-options="marginTop: 0" data-sticky-on="small">
+    <div class="top-bar-left menu">
       <ul class="dropdown menu">
          <li> <strong> <a href="/"> Away We Go </a> </strong> </li>
       </ul>
@@ -21,22 +21,23 @@
       <ul class="menu grid-x">
         <%- if current_user -%>
           <%= form_tag(search_users_path, method: :get) do %>
-            <li class="cell small-1 medium-3">
+            <li class="cell small-1 medium-3  hide-for-small-only">
               <%= text_field_tag 'query', params[:query], placeholder: 'Find a User' %>
               <%= submit_tag 'Search' %>
             </li>
 
 
           <% end %>
+        <div>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> </li>
         <%- else -%>
           <li><%= link_to 'Sign Up', new_user_registration_path %> </li>
           <li><%= link_to 'Sign In', new_user_session_path %> </li>
         <%- end -%>
+        </div>
       </ul>
     </div>
   </div>
-</div>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">

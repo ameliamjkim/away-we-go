@@ -80,10 +80,10 @@ class AttendeesContainer extends Component {
     })
 
     return(
-      <div className="tile cell small-10 small-offset-1 large-6 large-offset-3">
+      <div className="tile cell small-10 small-offset-1 medium-8 medium-offset-2 large-6 large-offset-3">
         <div className="callout">
           <div>
-            <h3>Attendees: </h3>
+            <h5>Attendees: </h5>
             <ul>
               {attendees}
             </ul>

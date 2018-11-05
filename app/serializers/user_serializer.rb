@@ -8,5 +8,4 @@ class UserSerializer < ActiveModel::Serializer
       nil
     end
   end
-
 end

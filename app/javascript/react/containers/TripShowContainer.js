@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import TripShowTile from '../components/TripShowTile'
 import AttendeesContainer from '../containers/AttendeesContainer'
 import ChatContainer from '../containers/ChatContainer'
+import WeatherContainer from '../containers/WeatherContainer'
 import { browserHistory } from 'react-router'
 
 class TripShowContainer extends Component {
@@ -68,7 +69,6 @@ class TripShowContainer extends Component {
     })
   }
 
-
   render() {
     return(
       <div>
@@ -88,6 +88,11 @@ class TripShowContainer extends Component {
           />
         </div>
         <div className="grid-x">
+          <WeatherContainer
+            name={this.state.trip.name}
+          />
+        </div>
+        <div className="grid-x">
           <AttendeesContainer
             key={this.state.trip.id}
             id={this.state.trip.id}
@@ -96,6 +101,7 @@ class TripShowContainer extends Component {
             currentUserId={this.state.currentUserId}
           />
         </div>
+
       </div>
 
       )
