@@ -5,14 +5,14 @@ class Api::V1::TripsController < ApplicationController
 	def index
 		upcoming_trips = []
 		past_trips = []
-	  ordered = Trip.order(:start_date)
-	  ordered.each do |trip|
-	    if trip.start_date > Date.today && trip.users.include?(current_user)
-	      upcoming_trips << trip
-	    elsif trip.start_date < Date.today && trip.users.include?(current_user)
+		ordered = Trip.order(:start_date)
+		ordered.each do |trip|
+			if trip.start_date > Date.today && trip.users.include?(current_user)
+				upcoming_trips << trip
+			elsif trip.start_date < Date.today && trip.users.include?(current_user)
 				past_trips << trip
 			end
-	  end
+		end
 
 		payload = {
 			upcoming_trips: serialize_array(upcoming_trips, TripSerializer),
@@ -22,11 +22,11 @@ class Api::V1::TripsController < ApplicationController
 	end
 
 	def show
-    if Trip.find(params[:id]).users.include?(current_user)
-      render json: Trip.find(params[:id])
-    else
-      render json: "You are not authorized to view this trip!"
-    end
+		if Trip.find(params[:id]).users.include?(current_user)
+			render json: Trip.find(params[:id])
+		else
+			render json: "You are not authorized to view this trip!"
+		end
 	end
 
 	def create
@@ -36,7 +36,7 @@ class Api::V1::TripsController < ApplicationController
 			usertrip = Usertrip.create(trip: trip, user: current_user)
 			chatroom = Chat.create(trip: trip)
 			render json: {trip: trip}
-			else
+		else
 			render json: {error: review.errors.full_messages.join(', ') }, status: :unprocessable_entity
 		end
 	end
@@ -51,11 +51,10 @@ class Api::V1::TripsController < ApplicationController
 	end
 
 	def serialize_array(data, serializer)
-   ActiveModel::Serializer::CollectionSerializer.new(data, each_serializer: serializer)
-  end
+		ActiveModel::Serializer::CollectionSerializer.new(data, each_serializer: serializer)
+	end
 
 	def trip_params
 		params.require(:trip).permit(:name, :start_date, :end_date, user: current_user)
 	end
-
 end

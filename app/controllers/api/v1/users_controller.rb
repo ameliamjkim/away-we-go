@@ -31,10 +31,9 @@ class Api::V1::UsersController < ApplicationController
 
 	private
 	def serialize_array(data, serializer)
-		 ActiveModel::Serializer::CollectionSerializer.new(data, each_serializer: serializer)
+		ActiveModel::Serializer::CollectionSerializer.new(data, each_serializer: serializer)
 	end
 
-	private
 	def followed_params
 		params.require(:followedId)
 	end
