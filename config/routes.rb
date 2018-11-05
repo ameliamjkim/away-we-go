@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show, :create, :destroy]
       resources :usertrips, only: [:index, :show, :create]
       resources :messages, only: [:show]
+      resources :weather, only: [:index]
     end
   end
 

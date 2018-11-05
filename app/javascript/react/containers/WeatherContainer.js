@@ -17,7 +17,7 @@ class WeatherContainer extends Component {
   }
 
   getWeather() {
-    fetch(`https://api.weatherbit.io/v2.0/current?city=${this.props.name}&key=d4b9c5cd60974b07b3cfdb5ae714d0da`,
+    fetch(`/api/v1/weather/?location=${this.props.name}`,
     {
       credentials: 'same-origin',
     })
@@ -33,14 +33,14 @@ class WeatherContainer extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState({
-          description: data.data[0].weather.description,
-          appTemp: data.data[0].app_temp,
-          icon: data.data[0].weather.icon,
-          sunrise: data.data[0].sunrise,
-          sunset: data.data[0].sunset,
-          temp: data.data[0].temp,
-          timezone: data.data[0].timezone,
-          uv: data.data[0].uv
+          description: data[0].description,
+          appTemp: data[0].app_temp,
+          icon: data[0].icon,
+          sunrise: data[0].sunrise,
+          sunset: data[0].sunset,
+          temp: data[0].temp,
+          timezone: data[0].timezone,
+          uv: data[0].uv
         })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))

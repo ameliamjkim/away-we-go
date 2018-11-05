@@ -1,9 +1,14 @@
 class HomesController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_user_for_trip
 
   def index
 
-    if params[:id]
+  end
+
+  private
+  def authorize_user_for_trip
+    if params[:id] && request.original_url.include?("trip")
       if Trip.exists?(params[:id]) && !Trip.find(params[:id]).users.include?(current_user)
         redirect_to root_path
       else
