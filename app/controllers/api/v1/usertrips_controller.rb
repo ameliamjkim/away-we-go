@@ -3,21 +3,21 @@ class Api::V1::UsertripsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-    usertrips = []
-    Usertrip.all.each do |usertrip|
-      if usertrip.user == current_user
-        usertrips << usertrip
-      end
-    end
-    render json: usertrips
+		usertrips = []
+		Usertrip.all.each do |usertrip|
+			if usertrip.user == current_user
+				usertrips << usertrip
+			end
+		end
+		render json: usertrips
 	end
 
 	def show
-    if Usertrip.find(params[:id]).trip.users.include?(current_user)
-      render json: Usertrip.find(params[:id])
-    else
-      render json: "You're not authorized"
-    end
+		if Usertrip.find(params[:id]).trip.users.include?(current_user)
+			render json: Usertrip.find(params[:id])
+		else
+			render json: "You're not authorized"
+		end
 	end
 
   def create
