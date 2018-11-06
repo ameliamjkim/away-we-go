@@ -7527,6 +7527,11 @@ react-addons-test-utils@~15.6.2:
   resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.6.2.tgz#c12b6efdc2247c10da7b8770d185080a7b047156"
   integrity sha1-wStu/cIkfBDae4dw0YUICnsEcVY=
 
+react-country-flags@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-country-flags/-/react-country-flags-2.2.3.tgz#a86cdf39ae992c9bdab03adfc4934bf87196cff1"
+  integrity sha512-cErU1GBDQ4sErCgY3XGrR2ahIJtLmRf3MysMR7Ytb6MbA2IUB6Q/rwGTUEhhej8+Pqchb5+DgUECWbvD8FnD3g==
+
 react-dom@~15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.2.tgz#015363f05b0a1fd52ae9efdd3a0060d90695208f"

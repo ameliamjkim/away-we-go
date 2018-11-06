@@ -79,6 +79,7 @@ class TripIndexContainer extends Component {
           key={trip.id}
           id={trip.id}
           name={trip.name}
+          country={trip.country}
           startDay={trip.start_date}
           endDay={trip.end_date}
         />
@@ -91,6 +92,7 @@ class TripIndexContainer extends Component {
           key={trip.id}
           id={trip.id}
           name={trip.name}
+          country={trip.country}
           startDay={trip.start_date}
           endDay={trip.end_date}
         />

@@ -5,6 +5,7 @@ class TripFormContainer extends Component {
    super(props);
    this.state = {
      name: "",
+     country: "",
      startDate: "",
      endDate: ""
    }
@@ -21,6 +22,7 @@ class TripFormContainer extends Component {
 
   let formPayLoad = {
     name: this.state.name,
+    country: this.state.country,
     start_date: this.state.startDate,
     end_date: this.state.endDate
   }
@@ -35,6 +37,7 @@ class TripFormContainer extends Component {
     this.props.addNewTrip(formPayLoad)
     this.setState({
      name: "",
+     country: "",
      startDate: "",
      endDate: ""
     })
@@ -49,7 +52,10 @@ class TripFormContainer extends Component {
        <form className="callout tile" onSubmit={this.handleSubmit}>
         <h3 className="text-center"> Add a New Destination </h3>
           <label> Name:
-           <input name="name" type="text" onChange={this.handleChange} value={this.state.name} placeholder="Your Next Destination" />
+           <input name="name" type="text" onChange={this.handleChange} value={this.state.name} placeholder="City, State" />
+           </label>
+          <label> Optional Country Code:
+           <input name="country" type="text" onChange={this.handleChange} value={this.state.country} />
            </label>
           <label> Start Day:
            <input name="startDate" type="date" onChange={this.handleChange} value={this.state.startDate} />

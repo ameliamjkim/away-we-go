@@ -6,7 +6,8 @@ describe("TripIndexTile", () => {
   beforeEach(() => {
     wrapper = mount(
       <TripIndexTile
-        name = "Korea"
+        name = "Seoul"
+        country="KR"
         owner = "Amelia Kim"
         startDay = "12 Oct 2018"
         endDay = "19 Oct 2018"
@@ -23,14 +24,14 @@ describe("TripIndexTile", () => {
   });
 
   it("should render a h4 tag with the the text property value", () => {
-  expect(wrapper.find("h4").text()).toBe("Korea")
+  expect(wrapper.find("h4").text()).toBe("Seoul")
+  });
+
+  it("should render an img tag", () => {
+    expect(wrapper.find("img")).toBePresent();
   });
 
   it("should render an p tag", () => {
-    expect(wrapper.find("p")).toBePresent();
-  });
-
-  it("should render a p tag with the the text property value", () => {
-  expect(wrapper.find("p").text()).toBe("From 12 Oct 2018 to 19 Oct 2018")
+    expect(wrapper.find("span")).toBePresent();
   });
 })
