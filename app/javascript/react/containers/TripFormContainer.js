@@ -64,7 +64,7 @@ class TripFormContainer extends Component {
           <label> Name:
            <input name="name" type="text" onChange={this.handleChange} value={this.state.name} placeholder="City, State" />
            </label>
-           <label> Optional Country Code:
+           <label> Optional Country:
              <select name="country" onChange={this.handleChange} >
              <option value="">Country</option>
              {countries}
