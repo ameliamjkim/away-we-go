@@ -93,4 +93,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Set cable server URI for production (Heroku)
+  config.web_socket_server_url = "wss://away-we-go.herokuapp.com/cable" 
+
 end
