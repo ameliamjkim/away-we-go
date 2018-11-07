@@ -11,6 +11,7 @@ class TripShowContainer extends Component {
     this.state = {
       trip: [],
       user: [],
+      country: "",
       attendees: [],
       currentUserId: ""
     }
@@ -38,7 +39,8 @@ class TripShowContainer extends Component {
           trip: data,
           user: data.user,
           attendees: data.users,
-          currentUserId: data.current_user_id
+          currentUserId: data.current_user_id,
+          country: data.country
          })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -83,6 +85,7 @@ class TripShowContainer extends Component {
             lastName={this.state.user.last_name}
             currentUserId={this.state.currentUserId}
             ownerId={this.state.user.id}
+            country={this.state.country}
             handleDelete={this.handleDelete}
             deleteTrip={this.deleteTrip}
           />

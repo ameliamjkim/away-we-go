@@ -18,7 +18,7 @@ class WeatherParser
       sunset: response["data"][0]["sunset"],
       description: response["data"][0]["weather"]["description"],
       uv: response["data"][0]["uv"],
-      timezone: response["data"][0]["timezone"]
+      timezone: response["data"][0]["timezone"].gsub(/_/, " ")
     }
     @data << weather_data
   end

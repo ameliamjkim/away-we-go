@@ -12,11 +12,15 @@ import { Link } from 'react-router'
     deleteButton = <button className="panel tile" onClick={deleteTrip}>Delete this Trip</button>
     }
 
+    let country
+    if(props.country) {
+      country = <img className="text-right" src={`https://www.countryflags.io/${props.country}/flat/48.png`}/>
+    }
   return(
     <div className="tile cell small-10 small-offset-1 medium-8 medium-offset-2 large-6 large-offset-3">
       <div className="callout">
         <div>
-          <h3>Location: {props.name}</h3>
+          <h3>Location: {props.name}<span className="weather">{country}</span></h3>
           <ul>
             <li>Created by {props.firstName} {props.lastName}</li>
             <li><strong>Begins:</strong> {props.startDay}</li>
