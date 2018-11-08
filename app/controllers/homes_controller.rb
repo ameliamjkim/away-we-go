@@ -11,7 +11,7 @@ class HomesController < ApplicationController
     if params[:id] && request.original_url.include?("trip")
       if Trip.exists?(params[:id]) && !Trip.find(params[:id]).users.include?(current_user)
         redirect_to root_path
-      else
+      elsif !Trip.exists?(params[:id])
         redirect_to root_path
       end
     end

@@ -28,8 +28,7 @@ class ChatContainer extends Component {
     })
     .then((response) => {
       if (response.ok) {
-        return response.json();
-      }
+        return response.json();      }
     })
     .then((data) => {
       this.setState({user: data.current_user_id})
@@ -94,7 +93,6 @@ class ChatContainer extends Component {
     .then((data) => {
       this.setState({pastMessages: data})
     })
-
   }
 
   render() {

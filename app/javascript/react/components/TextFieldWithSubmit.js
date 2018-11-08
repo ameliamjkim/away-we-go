@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextFieldWithSubmit = props => {
+const TextFieldWithSubmit = (props) => {
   return (
     <div className='input-group'>
       <input

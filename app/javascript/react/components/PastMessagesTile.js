@@ -6,7 +6,7 @@ const PastMessagesTile = (props) => {
   if(props.pastMessage != [] ) {
     pastMessages = props.pastMessages.map((message) => {
       return(
-        <p className="tile callout">{message.body}</p>
+        <p key={message.id} className="tile callout"><strong> {message.user.email}:</strong> {message.body}</p>
       )
     })
   }
