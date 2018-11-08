@@ -40,5 +40,8 @@ $ yarn run test
 * [Weatherbit](https://www.weatherbit.io/) - Third party weather API
 * [Countryflags](https://countryflags.io/) - Third party country flags API
 
+### Check out Away We Go
+* [Away We Go](https://away-we-go.herokuapp.com/)
+
 ### Acknowledgments
 * Thanks to all my peers and educators at Launch Academy!
