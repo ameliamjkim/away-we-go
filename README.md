@@ -6,7 +6,7 @@ This website was created as a capstone project for Launch Academy.
 
 ---
 
-## Getting Started
+### Getting Started
 To use Away We Go locally run:
 ```
 $ bundle install
@@ -22,7 +22,7 @@ $ yarn run start
 Finally, head to your [local server](localhost:3000).
 
 
-## Running Tests
+### Running Tests
 Away We Go was created using in accordance with Agile methodology. Test Driven Development was implemented in RSpec for Rails as well as Enzyme testing with Jasmine and Karma for React.
 
 To run tests for Away We Go, first run:
@@ -34,11 +34,11 @@ Then run:
 $ yarn run test
 ```
 
-## Built With
+### Built With
 * [Foundation](localhost:3000) - CSS Framework
 * [ActionCable](https://guides.rubyonrails.org/action_cable_overview.html) - Websocket and chat integration
 * [Weatherbit](https://www.weatherbit.io/) - Third party weather API
 * [Countryflags](https://countryflags.io/) - Third party country flags API
 
-## Acknowledgments
-* Thanks to all my peers and educators at Launch Academy! 
+### Acknowledgments
+* Thanks to all my peers and educators at Launch Academy!
