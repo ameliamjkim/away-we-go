@@ -19,7 +19,7 @@ In a separate terminal tab run:
 $ yarn install
 $ yarn run start
 ```
-Finally, head to your [local server](localhost:3000).
+Finally, head to your local server at localhost:3000
 
 
 ### Running Tests
@@ -35,7 +35,7 @@ $ yarn run test
 ```
 
 ### Built With
-* [Foundation](localhost:3000) - CSS Framework
+* [Foundation](https://foundation.zurb.com/sites/docs/) - CSS Framework
 * [ActionCable](https://guides.rubyonrails.org/action_cable_overview.html) - Websocket and chat integration
 * [Weatherbit](https://www.weatherbit.io/) - Third party weather API
 * [Countryflags](https://countryflags.io/) - Third party country flags API
