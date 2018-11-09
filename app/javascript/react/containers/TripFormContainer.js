@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { countriesShort, countriesLong } from '../helpers/flags'
+import swal from 'sweetalert';
+
 
 class TripFormContainer extends Component {
  constructor(props) {
@@ -43,7 +45,7 @@ class TripFormContainer extends Component {
      endDate: ""
     })
   } else {
-    alert('Please fill form correctly before submitting!')
+    swal('Please fill form correctly before submitting!')
   }
  }
 

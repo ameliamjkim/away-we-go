@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import swal from 'sweetalert';
 
 class AttendeeFormContainer extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class AttendeeFormContainer extends Component {
         user: ""
       })
     } else {
-      alert('Please select a friend!')
+      swal('Please select a friend!')
     }
   }
 
