@@ -45,7 +45,7 @@ class TripFormContainer extends Component {
      endDate: ""
     })
   } else {
-    swal('Please fill form correctly before submitting!')
+    swal('Please fill out the form correctly before submitting!')
   }
  }
 
