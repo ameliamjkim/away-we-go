@@ -4,6 +4,8 @@ import AttendeesContainer from '../containers/AttendeesContainer'
 import ChatContainer from '../containers/ChatContainer'
 import WeatherContainer from '../containers/WeatherContainer'
 import { browserHistory } from 'react-router'
+import swal from 'sweetalert';
+
 
 class TripShowContainer extends Component {
   constructor(props) {
@@ -57,7 +59,7 @@ class TripShowContainer extends Component {
     })
     .then(response => {
       if (response.ok) {
-        alert("Trip was deleted!")
+        swal("Trip was deleted!")
         return browserHistory.push(`/trips`)
       }
       else {

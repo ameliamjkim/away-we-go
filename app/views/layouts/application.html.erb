@@ -32,26 +32,25 @@
     </div>
   </div>
 
-<div class="grid-x">
-  <div class="cell small-8 small-offset-2">
-    <%- flash.each do |key, value| -%>
-      <div class="flash text-center tile flash-<%= key %>">
-        <%= value %>
-      </div>
-    <%- end -%>
+  <div class="grid-x">
+    <div class="cell small-8 small-offset-2">
+      <%- flash.each do |key, value| -%>
+        <div class="flash text-center tile flash-<%= key %>">
+          <%= value %>
+        </div>
+      <%- end -%>
+    </div>
   </div>
-</div>
-  <%= yield %>
+    <%= yield %>
 
-  <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
 
-  <%- if Rails.env.development? || Rails.env.test? -%>
-    <%= javascript_tag do %>
-      window.railsEnv = '<%= Rails.env %>'
+    <%- if Rails.env.development? || Rails.env.test? -%>
+      <%= javascript_tag do %>
+        window.railsEnv = '<%= Rails.env %>'
+      <%- end -%>
     <%- end -%>
-  <%- end -%>
-  <%= javascript_pack_tag 'application' %>
-
-  <%= yield :extra_footer %>
-</body>
+    <%= javascript_pack_tag 'application' %>
+    <%= yield :extra_footer %>
+  </body>
 </html>
