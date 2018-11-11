@@ -62,7 +62,7 @@ class UserShowContainer extends Component {
   addFollower(follower) {
     follower.followedId = this.props.params.id
     fetch(`/api/v1/users`, {
-      method: 'post',
+      method: 'POST',
       body: JSON.stringify(follower),
       headers: {
         'Accept': 'application/json',
@@ -88,7 +88,7 @@ class UserShowContainer extends Component {
 
   deleteFollower(follower) {
     fetch(`/api/v1/users/${this.props.params.id}`, {
-      method: 'delete',
+      method: 'DELETE',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json' },

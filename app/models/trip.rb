@@ -3,6 +3,7 @@ class Trip < ApplicationRecord
   has_many :usertrips
   has_many :users, through: :usertrips
   has_many :chats
+  has_many :todos
 
 
   COUNTRIES_SHORT = [
