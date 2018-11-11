@@ -58,7 +58,6 @@ class TodoContainer extends Component {
      })
      .then(response => response.json())
      .then(body => {
-       debugger
        this.setState({todos: body})
      })
      .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -123,9 +122,9 @@ class TodoContainer extends Component {
 
     return(
       <div className="grid-x">
-        <div className="cell small-8 small-offset-2 medium-6 medium-offset-3">
+        <div className="cell small-8 small-offset-2 medium-6 medium-offset-3 large-4 large-offset-4">
           <div className="tile callout">
-          <h3> Trip Todos </h3>
+          <h3> Trip To-Dos </h3>
             {eachTodo}
             <br/>
             <TodoForm

@@ -28,7 +28,7 @@ import { Link } from 'react-router'
           </ul>
           <Link to={`/trips/${props.id}/chats`}>Chatroom</Link>
           <br/>
-          <Link to={`/trips/${props.id}/todos`}>Todo List</Link>
+          <Link to={`/trips/${props.id}/todos`}>To Do List</Link>
           <br/>
           <Link to={'/'}>Go Back to All Trips</Link>
           <br/>
