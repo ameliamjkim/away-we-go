@@ -6,7 +6,7 @@ const TodoTile = (props) => {
   }
 
   let completed = ""
-  let checked
+  let checked = ""
   if(props.completed) {
     completed = "strikeout"
     checked = "checked"
@@ -16,7 +16,7 @@ const TodoTile = (props) => {
 
   return(
     <div>
-      <input type="checkbox" onClick={props.toggleCompleted} checked={checked}/><span className={completed}> {props.description} </span>
+      <input type="checkbox" onChange={props.toggleCompleted} checked={checked}/><span className={completed}> {props.description} </span>
     </div>
   );
 };
