@@ -11,8 +11,8 @@ class TripShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      trip: [],
-      user: [],
+      trip: "",
+      user: "",
       country: "",
       attendees: [],
       currentUserId: ""
@@ -51,7 +51,7 @@ class TripShowContainer extends Component {
   handleDelete(id){
     let tripId = this.props.params.id
     fetch(`/api/v1/trips/${tripId}`, {
-      method: 'delete',
+      method: 'DELETE',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json' } ,
@@ -89,7 +89,6 @@ class TripShowContainer extends Component {
             ownerId={this.state.user.id}
             country={this.state.country}
             handleDelete={this.handleDelete}
-            deleteTrip={this.deleteTrip}
           />
         </div>
         <div className="grid-x">

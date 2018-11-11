@@ -40,7 +40,7 @@ class TripIndexContainer extends Component {
 
   addNewTrip(formPayLoad) {
    fetch(`/api/v1/trips`, {
-     method: 'post',
+     method: 'POST',
      body: JSON.stringify(formPayLoad),
      headers: {
        'Accept': 'application/json',
@@ -60,7 +60,6 @@ class TripIndexContainer extends Component {
     .then(response => response.json())
     .then(body => {
      let newTrips = this.state.upcomingTrips.concat(body.trip)
-     console.log(body)
      this.setState( { upcomingTrips: newTrips } )
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))

@@ -44,7 +44,7 @@ class AttendeesContainer extends Component {
 
   addAttendee(formPayLoad) {
    fetch(`/api/v1/usertrips`, {
-     method: 'post',
+     method: 'POST',
      body: JSON.stringify(formPayLoad),
      headers: {
        'Accept': 'application/json',
@@ -63,7 +63,6 @@ class AttendeesContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      console.log(body)
      let newAttendees = this.state.attendees.concat(body)
      this.setState( {
        attendees: newAttendees,

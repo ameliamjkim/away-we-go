@@ -5,7 +5,6 @@ const TripIndexTile = (props) => {
   let country
   if(props.country){
     country = <img className="text-right" src={`https://www.countryflags.io/${props.country}/flat/48.png`}/>
-
   }
 
   return(
