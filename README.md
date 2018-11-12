@@ -19,7 +19,7 @@ In a separate terminal tab run:
 $ yarn install
 $ yarn run start
 ```
-Finally, head to your local server at localhost:3000
+Finally, head to your local server at http://localhost:3000
 
 
 ### Running Tests
@@ -29,10 +29,15 @@ To run tests for Away We Go, first run:
 ```
 $ bundle exec rspec
 ```
-Then run:
+In a separate terminal tab run:
 ```
 $ yarn run test
 ```
+
+### Future Features
+* Implementation of TripAdvisor API to allow users to decide what activities and events they would like to add to their trip
+* Implementation of Draft.js to allow users to take collaborative notes and brainstorm for their trips
+
 
 ### Built With
 * [Foundation](https://foundation.zurb.com/sites/docs/) - CSS Framework
