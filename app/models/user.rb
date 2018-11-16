@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :usertrips
   has_many :trips, through: :usertrips
   has_many :messages
+  has_many :todos
 
   has_many :follower_follows, class_name: "Follow", foreign_key: :follower_id
   has_many :followeds, through: :follower_follows, source: :followed
