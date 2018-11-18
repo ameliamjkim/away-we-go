@@ -18,6 +18,7 @@ class TripShowContainer extends Component {
       currentUserId: ""
     }
     this.handleDelete = this.handleDelete.bind(this);
+    this.removeTrip = this.removeTrip.bind(this);
   }
 
   componentDidMount() {
@@ -48,7 +49,7 @@ class TripShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-  handleDelete(id){
+  handleDelete(){
     let tripId = this.props.params.id
     fetch(`/api/v1/trips/${tripId}`, {
       method: 'DELETE',
@@ -60,6 +61,31 @@ class TripShowContainer extends Component {
     .then(response => {
       if (response.ok) {
         swal("Trip was deleted!")
+        return browserHistory.push(`/trips`)
+      }
+      else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .catch(error => {
+      console.error(`Error in Fetch: ${error}`)
+    })
+  }
+
+  removeTrip(){
+    let tripId = this.props.params.id
+    fetch(`/api/v1/usertrips/${tripId}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json' } ,
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      if (response.ok) {
+        swal("You've left the trip!")
         return browserHistory.push(`/trips`)
       }
       else {
@@ -89,6 +115,7 @@ class TripShowContainer extends Component {
             ownerId={this.state.user.id}
             country={this.state.country}
             handleDelete={this.handleDelete}
+            removeTrip={this.removeTrip}
           />
         </div>
         <div className="grid-x">

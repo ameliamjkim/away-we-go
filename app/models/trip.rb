@@ -11,7 +11,13 @@ class Trip < ApplicationRecord
   ]
 
   validates_presence_of :name, :user_id, :start_date, :end_date
-
   validates :country, inclusion: { in: COUNTRIES_SHORT }
+  validate :date_validation
+
+  def date_validation
+    if :start_date.present? && :start_date < Date.today
+      errors.add(:start_date, "Trip can't be in the past")
+    end
+  end
 
 end

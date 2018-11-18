@@ -27,6 +27,11 @@ class Api::V1::UsertripsController < ApplicationController
     end
   end
 
+	def destroy
+		user_trip = Usertrip.find_by(trip: Trip.find(params[:id]), user: current_user)
+		user_trip.destroy
+	end
+
   private
   def user_params
     params.require(:user).permit(:user, :tripId)
