@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :trips, only: [:index, :show, :create, :destroy]
       resources :users, only: [:index, :show, :create, :destroy]
       resources :todos, only: [:index, :show, :create, :update]
-      resources :usertrips, only: [:index, :show, :create]
+      resources :usertrips, only: [:index, :show, :create, :destroy]
       resources :messages, only: [:show]
       resources :weather, only: [:index]
     end

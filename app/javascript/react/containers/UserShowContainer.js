@@ -86,7 +86,7 @@ class UserShowContainer extends Component {
      .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-  deleteFollower(follower) {
+  deleteFollower() {
     fetch(`/api/v1/users/${this.props.params.id}`, {
       method: 'DELETE',
       headers: {
@@ -117,7 +117,7 @@ class UserShowContainer extends Component {
     if(this.state.following == false) {
       this.addFollower(this.state.currentUser)
     } else {
-      this.deleteFollower(this.state.currentUser)
+      this.deleteFollower()
     }
     this.setState({following: !following})
   }

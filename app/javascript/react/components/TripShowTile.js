@@ -3,13 +3,19 @@ import { Link } from 'react-router'
 
  const TripShowTile = (props) => {
     let deleteTrip = () => {
-      props.handleDelete(props.id)
+      props.handleDelete()
     }
 
-    let deleteButton
+    let removeTrip = () => {
+      props.removeTrip()
+    }
+
+    let deleteButton = null
 
     if(props.currentUserId == props.ownerId) {
-    deleteButton = <button className="panel tile" onClick={deleteTrip}>Delete this Trip</button>
+      deleteButton = <button className="panel tile" onClick={deleteTrip}>Delete this Trip</button>
+    } else {
+      deleteButton = <button className="panel tile" onClick={removeTrip}>Leave this Trip</button>
     }
 
     let country

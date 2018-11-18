@@ -20,12 +20,17 @@ class Api::V1::UsertripsController < ApplicationController
 		end
 	end
 
-  def create
-    usertrip = Usertrip.new(user: User.find_by(email: user_params[:user]), trip: Trip.find(user_params[:tripId].to_i))
-    if usertrip.save
-      render json: usertrip.user
-    end
-  end
+	def create
+		usertrip = Usertrip.new(user: User.find_by(email: user_params[:user]), trip: Trip.find(user_params[:tripId].to_i))
+		if usertrip.save
+			render json: usertrip.user
+		end
+	end
+
+	def destroy
+		user_trip = Usertrip.find_by(trip: Trip.find(params[:id]), user: current_user)
+		user_trip.destroy
+	end
 
   private
   def user_params

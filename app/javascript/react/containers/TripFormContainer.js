@@ -34,7 +34,7 @@ class TripFormContainer extends Component {
   let dd = today.getDate();
   let mm = today.getMonth() + 1
   let yyyy = today.getFullYear();
-  today = mm + '/' + dd + '/' + yyyy;
+  today = yyyy + '-' + mm + '-' + dd;
 
   if((this.state.startDate < this.state.endDate) && (today < this.state.startDate) && (this.state.name.trim() != "")) {
     this.props.addNewTrip(formPayLoad)
