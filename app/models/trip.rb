@@ -15,8 +15,8 @@ class Trip < ApplicationRecord
   validate :date_validation
 
   def date_validation
-    if :start_date.present? && :start_date < Date.today
-      errors.add(:start_date, "Trip can't be in the past")
+    if start_date.present? && start_date < Date.today
+      errors.add(start_date, "Trip can't be in the past")
     end
   end
 
