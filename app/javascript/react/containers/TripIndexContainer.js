@@ -7,7 +7,6 @@ class TripIndexContainer extends Component {
     this.state = {
       upcomingTrips: [],
       pastTrips: [],
-      currentUserId: "",
       isHidden: true
     }
     this.addNewTrip = this.addNewTrip.bind(this);
@@ -29,11 +28,10 @@ class TripIndexContainer extends Component {
       })
       .then(response => response.json())
       .then(data => {
-        this.setState( {
+        this.setState({
           upcomingTrips: data.trips.upcoming_trips,
           pastTrips: data.trips.past_trips,
-          currentUserId: data.current_user_id
-         } )
+         })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
