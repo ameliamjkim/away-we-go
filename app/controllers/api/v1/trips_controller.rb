@@ -22,8 +22,14 @@ class Api::V1::TripsController < ApplicationController
 	end
 
 	def show
+		trip = [Trip.find(params[:id])]
+
+		payload = {
+			info: serialize_array(trip, TripSerializer)
+		}
+
 		if Trip.find(params[:id]).users.include?(current_user)
-			render json: Trip.find(params[:id])
+			render json: {current_user_id: current_user.id, trip: payload }
 		else
 			render json: "You are not authorized to view this trip!"
 		end

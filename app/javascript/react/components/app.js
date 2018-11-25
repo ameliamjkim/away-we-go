@@ -18,7 +18,6 @@ export const App = (props) => {
         <Route path="users/:id" component={UserShowContainer} />
     </Router>
     </div>
-
   )
 }
 

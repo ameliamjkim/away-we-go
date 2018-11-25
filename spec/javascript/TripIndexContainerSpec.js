@@ -60,7 +60,6 @@ describe("TripIndexContainer", () => {
       upcomingTrips: [],
       pastTrips: [],
       isHidden: true,
-      currentUserId: ""
     });
   })
 });

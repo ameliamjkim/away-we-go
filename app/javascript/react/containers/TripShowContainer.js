@@ -39,11 +39,11 @@ class TripShowContainer extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState({
-          trip: data,
-          user: data.user,
-          attendees: data.users,
+          trip: data.trip.info[0],
+          user: data.trip.info[0].user,
+          attendees: data.trip.info[0].users,
           currentUserId: data.current_user_id,
-          country: data.country
+          country: data.trip.info[0].country
          })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
